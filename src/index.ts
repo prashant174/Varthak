@@ -1,4 +1,4 @@
-import express from "express";
+import express, { Request, Response } from "express";
 import dotenv from "dotenv";
 import { userRouter } from "./routes/userRoute";
 import { BookRouter } from "./routes/bookRoute";
@@ -11,6 +11,10 @@ const app = express();
 
 app.use(express.json());
 app.use(logger)
+
+app.get("/",(req:Request,res:Response)=>{
+   res.status(200).send(`<h1>Welcome to Varthak Backend</h1>`)
+})
 
 app.use("/",userRouter)
 app.use("/",BookRouter)
